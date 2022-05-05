@@ -186,8 +186,9 @@
                                         <span class="font-weight-bold">Seu nível mínimo de gasto de água foi
                                             atingido!</span>
                                     </div>
+                                    <!--AQUI MUDAR AS COISAS DE NOTIFICAÇÕES-->
                                 </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Ver todas as
+                                <a class="dropdown-item text-center small text-gray-500" href="#" data-toggle="modal" data-target="#notificacoesModal">Ver todas as
                                     Notificações</a>
                             </div>
                         </li>
@@ -413,7 +414,7 @@
                         </div>
                     </div>
                 </footer>
-                
+
                 <!-- Scroll to Top Button-->
                 <a class="scroll-to-top rounded" href="#page-top">
                     <i class="fas fa-angle-up"></i>
@@ -440,6 +441,27 @@
                         </div>
                     </div>
                 </div>
+
+                <!--AQUI TENHO QUE ALTERAR DE NOTIFICAÇÕES-->
+                <div class="modal fade" id="notificacoesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">"</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="button" data-dismiss="modal">Voltar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
                 <!-- Bootstrap core JavaScript-->
                 <script src="vendor/jquery/jquery.min.js"></script>
