@@ -19,9 +19,10 @@
 
     <!-- Customização do stilo do templete-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css" rel="stylesheet">
-    
-    
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+        rel="stylesheet">
+
+
 </head>
 
 <body id="page-top">
@@ -151,7 +152,7 @@
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Notificações
+                                    Configurações de Notificações
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="mr-3">
@@ -230,46 +231,49 @@
                             <h6 class="m-0 font-weight-bold text-primary">Notificações</h6>
                         </div>
                         <div class="card-body">
-                            <p class="mb-4">As notificações do sistema auxiliam na apresentação dos dados para o usuário, para
+                            <p class="mb-4">As notificações do sistema auxiliam na apresentação dos dados para o
+                                usuário, para
                                 que
                                 quando o consumo for maior que o ideal retorne alertas informando sobre o gasto de
                                 consumo de água</a>.</p>
                             <form>
                                 <div class="card-body">
-                                    <input type="checkbox" data-toggle="toggle" data-on="Ativado" data-off="Desativado" data-size="sm">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Ativado" data-off="Desativado"
+                                        data-size="sm">
                                     Notificar quando chegar próximo ao consumo ideal diário
                                     <script>
-                                      $(function() {
-                                        $('#toggle-two').bootstrapToggle({
-                                          on: 'Ativado',
-                                          off: 'Desativado'
-                                        });
-                                      })
+                                        $(function () {
+                                            $('#toggle-two').bootstrapToggle({
+                                                on: 'Ativado',
+                                                off: 'Desativado'
+                                            });
+                                        })
                                     </script>
                                     <br><br>
-                                    <input type="checkbox" data-toggle="toggle" data-on="Ativado" data-off="Desativado"data-size="sm">
+                                    <input type="checkbox" data-toggle="toggle" data-on="Ativado" data-off="Desativado"
+                                        data-size="sm">
                                     Notificar quando chegar próximo ao orçamento mensal
                                     <script>
-                                      $(function() {
-                                        $('#toggle-two').bootstrapToggle({
-                                          on: 'Ativado',
-                                          off: 'Desativado'
-                                        });
-                                      })
+                                        $(function () {
+                                            $('#toggle-two').bootstrapToggle({
+                                                on: 'Ativado',
+                                                off: 'Desativado'
+                                            });
+                                        })
                                     </script>
-                                    
-                             
-                                      
-        
+
+
+
+
                                 </div>
-                                
+
                             </form>
-                              
+
 
                         </div>
 
                     </div>
-                    
+
 
                     <!-- End of Page Wrapper -->
                     <footer class="sticky-footer bg-white">
@@ -308,23 +312,61 @@
                         </div>
                     </div>
 
-                    <!-- Bootstrap core JavaScript-->
-                    <script src="vendor/jquery/jquery.min.js"></script>
-                    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                    <!-- Core plugin JavaScript-->
-                    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                    <!--NOTIFICAÇÕES-->
+                    <div class="modal fade" id="notificacoesModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Notificações</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Atenção!</strong> O nível de gastos diários foi excedido!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Atenção!</strong> O nível de gastos diários foi excedido!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <strong>Atenção!</strong> O nível de gastos diários foi excedido!
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="button" data-dismiss="modal">Voltar</button>
 
-                    <!-- Custom scripts for all pages-->
-                    <script src="js/sb-admin-2.min.js"></script>
+                                </div>
 
-                    <!-- Page level plugins -->
-                    <script src="vendor/chart.js/Chart.min.js"></script>
+                                <!-- Bootstrap core JavaScript-->
+                                <script src="vendor/jquery/jquery.min.js"></script>
+                                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                    <!-- Page level custom scripts -->
-                    <script src="js/demo/chart-area-demo.js"></script>
-                    <script src="js/demo/chart-pie-demo.js"></script>
-                    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+                                <!-- Core plugin JavaScript-->
+                                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+                                <!-- Custom scripts for all pages-->
+                                <script src="js/sb-admin-2.min.js"></script>
+
+                                <!-- Page level plugins -->
+                                <script src="vendor/chart.js/Chart.min.js"></script>
+
+                                <!-- Page level custom scripts -->
+                                <script src="js/demo/chart-area-demo.js"></script>
+                                <script src="js/demo/chart-pie-demo.js"></script>
+                                <script
+                                    src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 
 </body>
