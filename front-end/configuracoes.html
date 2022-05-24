@@ -246,41 +246,45 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-6">
                                         <label for="password">Senha</label>
                                         <input type="password" class="form-control" id="password" placeholder="Senha">
                                     </div>
-
-                                    <div class="form-group col-md-5">
-                                        <label for="unidadeconsumidora">Unidade Consumidora</label>
-                                        <input class="form-control" id="unidadeconsumidora"
-                                            placeholder="Unidade Consumidora">
+                                    <div class="form-group col-md-6">
+                                            <label for="unidadeconsumidora">Unidade Consumidora</label>
+                                            <input class="form-control" id="unidadeconsumidora"
+                                                placeholder="Unidade Consumidora">
+                                        </div>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="qtdpessoas">Quantidade de Pessoas na casa</label>
-                                        <select id="qtdpessoas" name="qtdpessoas" class="form-control">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                        </select>
-                                    </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                    <label for="qtdpessoas">Quantidade de Pessoas na casa</label>
+                                    <select id="qtdpessoas" name="qtdpessoas" class="form-control">
+                                        <option value="1">1 Pessoa</option>
+                                        <option value="2">2 Pessoas</option>
+                                        <option value="3">3 Pessoas</option>
+                                        <option value="4">4 Pessoas</option>
+                                        <option value="5">5 Pessoas</option>
+                                        <option value="6">6 Pessoas</option>
+                                        <option value="7">7 Pessoas</option>
+                                        <option value="8">8 Pessoas</option>
+                                        <option value="9">9 Pessoas</option>
+                                        <option value="10">10 Pessoas</option>
+                                    </select>
                                 </div>
-
+                                <div class="form-group col-md-8">
+                                    <label for="metaconsumo">Meta de consumo (Mt³)</label>
+                                    <input type="text" class="form-control" id="metaconsumo" placeholder="Informe a quantidade de metros cúbicos">
+                                </div>
+                            </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2">
                                         <label for="CEP">CEP</label>
-                                        <input type="number" class="form-control" id="CEP">
+                                        <input type="number" class="form-control" id="CEP" placeholder="89700-000">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="Cidade">Cidade</label>
-                                        <input type="text" class="form-control" id="cidade">
+                                        <input type="text" class="form-control" id="cidade" placeholder="Informe a cidade">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="Estado">Estado</label>
@@ -321,15 +325,15 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="endreco">Endereço</label>
-                                        <input type="text" class="form-control" id="endereco">
+                                        <input type="text" class="form-control" id="endereco" placeholder="Rua, Bairro">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="numero">Número</label>
-                                        <input type="number" class="form-control" id="numero">
+                                        <input type="number" class="form-control" id="numero" placeholder="01">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="completo">Complemento</label>
-                                        <input type="text" class="form-control" id="completo">
+                                        <input type="text" class="form-control" id="completo" placeholder="Casa, Prédio">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Salvar</button>
