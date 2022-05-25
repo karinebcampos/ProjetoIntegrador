@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { sequelize } = require('./db');
-const { Usuario } = require('./back-end/usuario.js');
+const { Registro } = require('./back-end/register.js');
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -11,12 +12,12 @@ app.use(cors());
 
 app.post('/register', async (req,res) => {
     console.log(req.body);
-    const usuario = new Usuario();
-    usuario.nome = req.body.name;
-    usuario.email = req.body.email;
-    usuario.senha = req.body.password;
-    await usuario.save();
-    res.json(usuario);
+    const registro = new Registro();
+    registro.nome = req.body.name;
+    registro.email = req.body.email;
+    registro.senha = req.body.password;
+    await registro.save();
+    res.json(registro);
 })
 
 app.listen(3000, async () => {
