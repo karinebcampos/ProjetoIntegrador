@@ -31,7 +31,7 @@ app.post('/dados', async (req,res) => {
     res.json(dados);
 })
 
-app.post('/configuracao', async (req,res) => {
+app.post('/configuracoes', async (req,res) => {
     console.log(req.body);
     const configuracao = new Configuracao();
     configuracao.nome = req.body.nome;
