@@ -5,7 +5,7 @@ const cors = require('cors');
 const { sequelize } = require('./db');
 const { Registro } = require('./back-end/register.js');
 const { Dados } = require('./back-end/dados.js');
-const { Configuracao } = require('./back-end/config');
+const { Configuracao } = require('./back-end/configuracao');
 
 const app = express();
 app.use(bodyParser.json());
@@ -31,13 +31,13 @@ app.post('/dados', async (req,res) => {
     res.json(dados);
 })
 
-app.post('/config', (req, res) => {
+app.post('/configuracao', async (req,res) => {
     console.log(req.body);
     const configuracao = new Configuracao();
     configuracao.nome = req.body.nome;
     configuracao.email = req.body.email;
     configuracao.cpf = req.body.cpf;
-    configuracao.senha = req.body.senha;
+    configuracao.alterar_senha = req.body.alterar_senha;
     configuracao.unidade_consumidora = req.body.unidade_consumidora;
     configuracao.qtd_pessoas = req.body.qtd_pessoas;
     configuracao.meta_consumo = req.body.meta_consumo;
@@ -46,7 +46,6 @@ app.post('/config', (req, res) => {
     configuracao.estado = req.body.estado;
     configuracao.endereco = req.body.endereco;
     configuracao.numero = req.body.numero;
-    configuracao.complemento = req.bosy.complemento;
     await configuracao.save();
     res.json(configuracao);
 })

@@ -15,7 +15,7 @@ Configuracao.init({
     alterar_senha: {
         type: DataTypes.STRING
     },
-    Unidade_consumidora: {
+    unidade_consumidora: {
         type: DataTypes.STRING
     },
     qtd_pessoas: {
