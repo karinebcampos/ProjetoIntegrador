@@ -451,6 +451,49 @@
                     <script src="js/demo/chart-area-demo.js"></script>
                     <script src="js/demo/chart-pie-demo.js"></script>
                     <script>
+                       /* async function cadastrarConfiguracoes() {
+                            const response = await fetch('http://localhost:3000/config', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    nome: document.getElementById('name').value,
+                                    email: document.getElementById('email').value,
+                                    password: document.getElementById('password').value,
+                                    cpf: document.getElementById('cpf').value,
+                                    unidadeconsumidora: document.getElementById('unidadeconsumidora').value,
+                                    qtdpessoas: document.getElementById('qtdpessoas').value,
+                                    metaconsumo: document.getElementById('metaconsumo').value,
+                                    CEP: document.getElementById('CEP').value,
+                                    cidade: document.getElementById('cidade').value,
+                                    estado: document.getElementById('estado').value,
+                                    numero: document.getElementById('numero').value,
+                                    complemento: document.getElementById('complemento').value
+                                })
+                            });
+                            data = await response.json();
+
+                           // document.getElementById("nome").innerHTML = data.nome
+
+                            showMessage('Dados gravados com sucesso!');
+                            console.log(response);
+                            console.log(data);
+                        }
+
+                        const  = document.getElementById("form-registro");
+                        form.addEventListener('submit', (event) => {
+                            console.log('submit');
+
+                            cadastrarConfiguracoes();
+                            event.preventDefault();
+                        });
+*/
+
+                        
+                    
+                    </script>
+                    <script>
                         async function cadastrarConfiguracoes() {
                             const response = await fetch('http://localhost:3000/config', {
                                 method: 'POST',
@@ -474,14 +517,14 @@
                             });
                             data = await response.json();
 
-                            document.getElementById("nome").innerHTML = data.nome
+                           // document.getElementById("nome").innerHTML = data.nome
 
                             showMessage('Dados gravados com sucesso!');
                             console.log(response);
                             console.log(data);
                         }
 
-                        const form = document.getElementById("form-registro");
+                        const form = document.getElementById("form-configuracao");
                         form.addEventListener('submit', (event) => {
                             console.log('submit');
 
