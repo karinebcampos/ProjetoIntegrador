@@ -233,7 +233,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Incluir dados</h6>
                         </div>
                         <div class="card-body">
-                            <form>
+                            <form id="dados">
                                 <div class="form-row">
                                     <div class="form-group col-md-7">
                                         <label for="hidrometro">Dados do hidrômetro</label>
@@ -247,7 +247,8 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="date">Data da leitura</label><br>
-                                        <input class="form-control" type="date" id="dtleitura" placeholder="Data da leitura">
+                                        <input class="form-control" type="date" id="dtleitura"
+                                            placeholder="Data da leitura">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="date">Valor da última tarifa</label><br>
@@ -365,18 +366,54 @@
         <!-- Page level custom scripts -->
         <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script>
-   
 
- 
+
+
         <script>
-            $(function () {
-                $("#calendario").datepicker({
-                    showOn: "button",
-                    buttonImage: "calendario.png",
-                    buttonImageOnly: true
+            async function getDados() {
+                const response = await fetch('http://localhost:3000/configuracoes');
+                data = await response.json();
+                document.getElementById('hidrometro').value = data.hidrometro;
+                document.getElementById('dtleitura').value = data.dtleitura;
+                document.getElementById('valortarifa').value = data.valortarifa;
+                console.log('get dados')
+            }
+            getDados();
+            // const formConfiguracao = document.getElementById('configuracao');
+            // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
+            async function cadastrarDados() {
+
+                const response = await fetch('http://localhost:3000/configuracoes', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        nome: document.getElementById('hidrometro').value,
+                        email: document.getElementById('dtleitura').value,
+                        password: document.getElementById('valortarifa').value,
+                        
+                    })
                 });
+                data = await response.json();
+                showMessage('Dados gravados com sucesso!');
+                console.log(response);
+                console.log(data);
+
+            }
+
+            const form = document.getElementById("dados");
+            form.addEventListener('submit', (event) => {
+                console.log('submit');
+
+                cadastrarDados();
+                event.preventDefault();
             });
-        </script>       
+
+            function showMessage(texto) {
+                alert(texto);
+            }
+        </script>
 
 </body>
 

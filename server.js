@@ -23,11 +23,18 @@ app.post('/register', async (req,res) => {
     res.json(registro);
 })
 
+app.get('/dados', async (req,res) => {
+    console.log(req.body);
+    const dados = await Dados.findOne();
+    res.json(dados)
+});
+
 app.post('/dados', async (req,res) => {
     console.log(req.body);
     const dados = new Dados();
     dados.hidrometro = req.body.hidrometro;
-    dados.dt_leitura = req.body.dt_leitura;
+    dados.dtleitura = req.body.dtleitura;
+    dados.valortarifa = req.body.valortarifa;
     await dados.save();
     res.json(dados);
 })
