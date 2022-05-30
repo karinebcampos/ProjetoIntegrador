@@ -6,6 +6,7 @@ const { sequelize } = require('./db');
 const { Registro } = require('./back-end/register.js');
 const { Dados } = require('./back-end/dados.js');
 const { Configuracao } = require('./back-end/configuracao');
+const { config } = require('dotenv');
 
 const app = express();
 app.use(bodyParser.json());
@@ -30,6 +31,12 @@ app.post('/dados', async (req,res) => {
     await dados.save();
     res.json(dados);
 })
+
+app.get('/configuracoes', async (req,res) => {
+    console.log(req.body);
+    const configuracao = await Configuracao.findOne();
+    res.json(configuracao)
+});
 
 app.post('/configuracoes', async (req,res) => {
     console.log(req.body);
