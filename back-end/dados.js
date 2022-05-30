@@ -8,6 +8,9 @@ Dados.init({
     },
     dt_leitura: {
         type: DataTypes.STRING
+    },
+    valortarifa: {
+        type: DataTypes.STRING
     }
 }, {
     sequelize: sequelize,

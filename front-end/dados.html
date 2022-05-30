@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="date">Data da leitura</label><br>
-                                        <input class="form-control" type="date" id="dtleitura"
+                                        <input class="form-control" type="date" id="dt_leitura"
                                             placeholder="Data da leitura">
                                     </div>
                                     <div class="form-group col-md-4">
@@ -374,8 +374,8 @@
                 const response = await fetch('http://localhost:3000/configuracoes');
                 data = await response.json();
                 document.getElementById('hidrometro').value = data.hidrometro;
-                document.getElementById('dtleitura').value = data.dtleitura;
-                document.getElementById('valortarifa').value = data.valortarifa;
+                document.getElementById('dt_leitura').value = data.dt_leitura;
+                document.getElementById('valortarifa').value = data.hidrometro;
                 console.log('get dados')
             }
             getDados();
@@ -383,15 +383,15 @@
             // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
             async function cadastrarDados() {
 
-                const response = await fetch('http://localhost:3000/configuracoes', {
+                const response = await fetch('http://localhost:3000/dados', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        nome: document.getElementById('hidrometro').value,
-                        email: document.getElementById('dtleitura').value,
-                        password: document.getElementById('valortarifa').value,
+                        hidrometro: document.getElementById('hidrometro').value,
+                        dt_leitura: document.getElementById('dt_leitura').value,
+                        valortarifa: document.getElementById('valortarifa').value,
                         
                     })
                 });
