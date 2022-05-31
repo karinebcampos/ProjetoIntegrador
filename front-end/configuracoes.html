@@ -474,8 +474,35 @@
                         getConfiguracoes();
 
                         async function putConfiguracoes() {
-                            const response = await fetch ('http://localhost:3000/configuracoes')
+                            const response = await fetch('http://localhost:3000/configuracoes', {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    nome: document.getElementById('name').value,
+                                    email: document.getElementById('email').value,
+                                    password: document.getElementById('password').value,
+                                    cpf: document.getElementById('cpf').value,
+                                    unidadeconsumidora: document.getElementById('unidadeconsumidora').value,
+                                    qtdpessoas: document.getElementById('qtdpessoas').value,
+                                    metaconsumo: document.getElementById('metaconsumo').value,
+                                    cep: document.getElementById('cep').value,
+                                    cidade: document.getElementById('cidade').value,
+                                    estado: document.getElementById('estado').value,
+                                    numero: document.getElementById('numero').value,
+                                    complemento: document.getElementById('complemento').value
+                                })
+                            });
+                            data = await response.json();
+                            showMessage('Dados gravados com sucesso!');
+                            console.log(response);
+                            console.log(data);
+                            console.log('put configurações')
+
                         }
+                        putConfiguracoes();
+
                         // const formConfiguracao = document.getElementById('configuracao');
                         // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
                         async function cadastrarConfiguracoes() {

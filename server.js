@@ -64,15 +64,24 @@ app.post('/configuracoes', async (req,res) => {
     res.json(configuracao);
 })
 
-app.put('/configuracoes', async (req, res) => {
+app.put('/configuracoes/:id', async (req, res) => {
     const configuracao = await Configuracao.findByPk(req.params.id);
     if (!configuracao)
         return res.status(404).send('Cadastro não encontrado');
     configuracao.nome = req.body.nome;
     configuracao.email = req.body.email;
     configuracao.cpf = req.body.cpf;
+    configuracao.alterar_senha = req.body.alterar_senha;
+    configuracao.unidade_consumidora = req.body.unidade_consumidora;
+    configuracao.qtd_pessoas = req.body.qtd_pessoas;
+    configuracao.meta_consumo = req.body.meta_consumo;
+    configuracao.cep = req.body.cep;
+    configuracao.cidade = req.body.cidade;
+    configuracao.estado = req.body.estado;
+    configuracao.endereco = req.body.endereco;
+    configuracao.numero = req.body.numero;
     await configuracao.save();
-    return res.json(configuracao);
+    res.json(configuracao);
 })
 
 app.listen(3000, async () => {
