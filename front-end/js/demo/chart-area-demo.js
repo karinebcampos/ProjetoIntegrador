@@ -4,6 +4,12 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 // Area Chart Example
 var ctx = document.getElementById("myAreaChart");
+
+//const data = [{id: 1, valor: 1000},{id:2, valor: 2200}];
+//const leituras = data.map((item)=>{
+  //return valor;
+//})
+
 var litros = [0, 500, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000]
 var myLineChart = new Chart(ctx, {
   type: 'line',
