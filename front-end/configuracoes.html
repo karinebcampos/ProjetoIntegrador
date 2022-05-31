@@ -455,6 +455,7 @@
                     <script>
 
                         async function getConfiguracoes() {
+                            const id = localStorage.getItem('leituraId')
                             const response = await fetch('http://localhost:3000/configuracoes');
                             data = await response.json();
                             document.getElementById('name').value = data.nome;
@@ -469,12 +470,14 @@
                             document.getElementById('estado').value = data.estado;
                             document.getElementById('numero').value = data.numero;
                             document.getElementById('complemento').value = data.complemento;
-                            console.log('get configurações')
+                            console.log('get configurações');
+                            localStorage.setItem('leituraId',data.id);
                         }
                         getConfiguracoes();
 
                         async function putConfiguracoes() {
-                            const response = await fetch('http://localhost:3000/configuracoes', {
+                            const id = localStorage.getItem('leituraId')
+                            const response = await fetch('http://localhost:3000/configuracoes/' + id, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
@@ -500,8 +503,10 @@
                             console.log(data);
                             console.log('put configurações')
 
+                            localStorage.setItem('leituraId',data.id);
+
                         }
-                        putConfiguracoes();
+                        
 
                         // const formConfiguracao = document.getElementById('configuracao');
                         // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
@@ -530,6 +535,8 @@
                             showMessage('Dados gravados com sucesso!');
                             console.log(response);
                             console.log(data);
+
+                            localStorage.setItem('leituraId',data.id);
 
                         }
 
