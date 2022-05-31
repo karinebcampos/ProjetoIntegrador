@@ -64,6 +64,16 @@ app.post('/configuracoes', async (req,res) => {
     res.json(configuracao);
 })
 
+app.put('/configuracoes', async (req, res) => {
+    const configuracao = await Configuracao.findByPk(req.params.id);
+    if (!configuracao)
+        return res.status(404).send('Cadastro não encontrado');
+    configuracao.nome = req.body.nome;
+    configuracao.email = req.body.email;
+    configuracao.cpf = req.body.cpf;
+    await configuracao.save();
+    return res.json(configuracao);
+})
 
 app.listen(3000, async () => {
     await sequelize.sync();

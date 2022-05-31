@@ -340,7 +340,7 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="complemento">Complemento</label>
-                                    <input type="text" class="form-control" id="complemento" placeholder=" Casa,
+                                        <input type="text" class="form-control" id="complemento" placeholder=" Casa,
                                             Prédio">
                                     </div>
                                 </div>
@@ -450,21 +450,35 @@
                     <!-- Page level custom scripts -->
                     <script src="js/demo/chart-area-demo.js"></script>
                     <script src="js/demo/chart-pie-demo.js"></script>
-    
-                      
+
+
                     <script>
 
-async function getConfiguracoes() {
+                        async function getConfiguracoes() {
                             const response = await fetch('http://localhost:3000/configuracoes');
                             data = await response.json();
                             document.getElementById('name').value = data.nome;
+                            document.getElementById('email').value = data.email;
+                            document.getElementById('password').value = data.password;
+                            document.getElementById('cpf').value = data.cpf;
+                            document.getElementById('unidadeconsumidora').value = data.unidadeconsumidora;
+                            document.getElementById('qtdpessoas').value = data.qtdpessoas;
+                            document.getElementById('metaconsumo').value = data.metaconsumo;
+                            document.getElementById('cep').value = data.cep;
+                            document.getElementById('cidade').value = data.cidade;
+                            document.getElementById('estado').value = data.estado;
+                            document.getElementById('numero').value = data.numero;
+                            document.getElementById('complemento').value = data.complemento;
                             console.log('get configurações')
                         }
                         getConfiguracoes();
+
+                        async function putConfiguracoes() {
+                            const response = await fetch ('http://localhost:3000/configuracoes')
+                        }
                         // const formConfiguracao = document.getElementById('configuracao');
                         // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
                         async function cadastrarConfiguracoes() {
-                            
                             const response = await fetch('http://localhost:3000/configuracoes', {
                                 method: 'POST',
                                 headers: {
