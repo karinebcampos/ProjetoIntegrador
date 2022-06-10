@@ -383,12 +383,14 @@
 
         <script>
             async function getDados() {
+                const id = localStorage.getItem('leituraId')
                 const response = await fetch('http://localhost:3000/configuracoes');
                 data = await response.json();
                 document.getElementById('hidrometro').value = data.hidrometro;
                 document.getElementById('dt_leitura').value = data.dt_leitura;
                 document.getElementById('valortarifa').value = data.hidrometro;
-                console.log('get dados')
+                console.log('get dados');
+                localStorage.setItem('leituraId',data.id);
             }
             getDados();
             // const formConfiguracao = document.getElementById('configuracao');
@@ -411,6 +413,8 @@
                 showMessage('Dados gravados com sucesso!');
                 console.log(response);
                 console.log(data);
+
+                localStorage.setItem('leituraId',data.id);
 
             }
 

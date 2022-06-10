@@ -33,7 +33,7 @@ app.post('/dados', async (req,res) => {
     console.log(req.body);
     const dados = new Dados();
     dados.hidrometro = req.body.hidrometro;
-    dados.dtleitura = req.body.dtleitura;
+    dados.dt_leitura = req.body.dt_leitura;
     dados.valortarifa = req.body.valortarifa;
     await dados.save();
     res.json(dados);
