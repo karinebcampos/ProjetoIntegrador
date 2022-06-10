@@ -242,7 +242,7 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <label for="fotohidrometro">Tirar foto do Hidrômetro</label><br>
-                                        <button id="fotohidrometro" name="fotohidrometro" class="btn btn-primary">
+                                        <button type ="button" id="fotohidrometro" name="fotohidrometro" class="btn btn-default">
                                             <i class="fa fa-camera"></i> Tirar foto</button>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -383,6 +383,9 @@
 
 
         <script>
+
+            //GET Dados
+
             async function getDados() {
                 const id = localStorage.getItem('leituraId')
                 const response = await fetch('http://localhost:3000/dados');
@@ -394,7 +397,36 @@
                 localStorage.setItem('leituraId', data.id);
             }
             getDados();
-            
+
+            //PUT Dados
+
+            async function putDados() {
+                const id = localStorage.getItem('leituraId')
+                const response = await fetch('http://localhost:3000/dados/' + id, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        hidrometro: document.getElementById('hidrometro').value,
+                        dt_leitura: document.getElementById('dt_leitura').value,
+                        valortarifa: document.getElementById('valortarifa').value
+                        
+                    })
+                });
+                data = await response.json();
+                showMessage('Dados gravados com sucesso!');
+                console.log(response);
+                console.log(data);
+                console.log('put dados')
+
+                localStorage.setItem('leituraId', data.id);
+
+            }
+
+
+            //POST Dados
+
             async function cadastrarDados() {
                 const response = await fetch('http://localhost:3000/dados', {
                     method: 'POST',
