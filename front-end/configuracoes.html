@@ -454,6 +454,8 @@
 
                     <script>
 
+                        //GET CONFIGURAÇÕES
+
                         async function getConfiguracoes() {
                             const id = localStorage.getItem('leituraId')
                             const response = await fetch('http://localhost:3000/configuracoes');
@@ -474,6 +476,9 @@
                             localStorage.setItem('leituraId',data.id);
                         }
                         getConfiguracoes();
+
+
+                        //PUT CONFIGURAÇÕES
 
                         async function putConfiguracoes() {
                             const id = localStorage.getItem('leituraId')
@@ -508,8 +513,8 @@
                         }
                         
 
-                        // const formConfiguracao = document.getElementById('configuracao');
-                        // formConfiguracao.addEventListener('submit', cadastrarConfiguracoes);
+                        //POST CONFIGURAÇÕES
+
                         async function cadastrarConfiguracoes() {
                             const response = await fetch('http://localhost:3000/configuracoes', {
                                 method: 'POST',
