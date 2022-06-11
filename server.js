@@ -7,6 +7,7 @@ const { Registro } = require('./back-end/register.js');
 const { Dados } = require('./back-end/dados.js');
 const { Configuracao } = require('./back-end/configuracao');
 const { config } = require('dotenv');
+const req = require('express/lib/request');
 
 const app = express();
 app.use(bodyParser.json());
@@ -21,6 +22,26 @@ app.post('/register', async (req,res) => {
     registro.senha = req.body.password;
     await registro.save();
     res.json(registro);
+})
+
+app.post('/usuario_login', async (req,res) =>{
+    console.log(req.body);
+    if(req.body.senha == senha && req.body.email == email){
+        req.session.login = login;
+
+        res.render('logado');
+        }else{
+            res.render('usuario_login');
+        }
+})
+
+app.get('/usuario_login', async(req,res) =>{
+    if(req.session.login){
+        res.render('logado');
+        console.log('O meu usuário logado é: '+ req.session.login);
+        }else{
+            res.render('usuario_login');
+        }
 })
 
 app.get('/dados', async (req,res) => {
