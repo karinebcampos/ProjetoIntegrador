@@ -482,12 +482,15 @@
 
                         async function putConfiguracoes() {
                             const id = localStorage.getItem('leituraId')
+                            const user = JSON.parse( localStorage.getItem('user') );
+                            
                             const response = await fetch('http://localhost:3000/configuracoes/' + id, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify({
+                                    userId: user.id,
                                     nome: document.getElementById('name').value,
                                     email: document.getElementById('email').value,
                                     password: document.getElementById('password').value,

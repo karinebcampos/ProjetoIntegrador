@@ -97,6 +97,25 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+    <script>
+        async function login(event){
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({                
+                    cpf: document.getElementById('cpf').value,
+                    senha: document.getElementById('senha').value,
+                    
+                })
+            });
+            const data = await response.json();
+            localStorage.setItem('user',JSON.stringify(data))
+        }
+
+    </script>
+
 </body>
 
 </html>

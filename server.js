@@ -24,25 +24,32 @@ app.post('/register', async (req,res) => {
     res.json(registro);
 })
 
-app.post('/usuario_login', async (req,res) =>{
-    console.log(req.body);
-    if(req.body.senha == senha && req.body.email == email){
-        req.session.login = login;
-
-        res.render('logado');
-        }else{
-            res.render('usuario_login');
+app.post('/login', async (req, res) => {
+    const user = await Registro.findOne({
+        where: {
+            email: req.body.cpf
         }
+    });
+    if (user){
+        if (user.senha == req.body.senha){
+            const configuracao = Configuracao.findOne({where : {userId: user.id}})
+            return res.json({
+                user: {
+                    id: user.id,
+                    nome: user.nome,
+                    email: user.email
+                },
+                configuracao: configuracao
+            })
+        }
+    }
+    res.status(401).json({
+        message: 'Usuário ou senha incorretos'
+    })
+    
 })
 
-app.get('/usuario_login', async(req,res) =>{
-    if(req.session.login){
-        res.render('logado');
-        console.log('O meu usuário logado é: '+ req.session.login);
-        }else{
-            res.render('usuario_login');
-        }
-})
+
 
 app.get('/dados', async (req,res) => {
     console.log(req.body);
@@ -92,6 +99,7 @@ app.post('/configuracoes', async (req,res) => {
     configuracao.estado = req.body.estado;
     configuracao.endereco = req.body.endereco;
     configuracao.numero = req.body.numero;
+    configuracao.userId = req.body.userId;
     await configuracao.save();
     res.json(configuracao);
 })
