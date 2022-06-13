@@ -27,7 +27,7 @@ app.post('/register', async (req,res) => {
 app.post('/login', async (req, res) => {
     const user = await Registro.findOne({
         where: {
-            email: req.body.cpf
+            email: req.body.email
         }
     });
     if (user){
