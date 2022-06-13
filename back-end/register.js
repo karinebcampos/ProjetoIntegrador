@@ -12,6 +12,9 @@ Registro.init({
     senha: {
         type: DataTypes.STRING
     },
+    userId: {
+        type: DataTypes.STRING
+    },
 }, {
     sequelize: sequelize,
     modelName: 'registro'

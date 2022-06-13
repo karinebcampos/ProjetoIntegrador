@@ -20,6 +20,7 @@ app.post('/register', async (req,res) => {
     registro.nome = req.body.name;
     registro.email = req.body.email;
     registro.senha = req.body.password;
+    registro.userId = req.body.userId;
     await registro.save();
     res.json(registro);
 })
