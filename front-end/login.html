@@ -35,31 +35,31 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                           <div class="align-items-center col-lg-6 d-lg-flex"><div class="d-block"><img src="img/login_tela.png" class="img-fluid"></div></div>
+                            <div class="align-items-center col-lg-6 d-lg-flex">
+                                <div class="d-block"><img src="img/login_tela.png" class="img-fluid"></div>
+                            </div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Login</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" id="form-login">
                                         <div class="form-group">
-                                            <input type="email" class="form-control"
-                                                id="email" aria-describedby="email"
+                                            <input type="email" class="form-control" id="email" aria-describedby="email"
                                                 placeholder="Informe seu Email">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control"
-                                                id="senha" placeholder="Senha">
+                                            <input type="password" class="form-control" id="senha" placeholder="Senha">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="checklembrarsenha">
-                                                <label class="custom-control-label" for="checklembrarsenha">Lembrar senha</label>
+                                                <input type="checkbox" class="custom-control-input"
+                                                    id="checklembrarsenha">
+                                                <label class="custom-control-label" for="checklembrarsenha">Lembrar
+                                                    senha</label>
                                             </div>
                                         </div>
-                                        <a href="index.html" class="btn btn-primary btn-block">
-                                            Login
-                                        </a>
+                                        <button type="submit" class="btn btn-primary btn-block">Login</button>
                                         <!-- <hr>
                                         <a href="index.html" class="btn btn-google btn-block">
                                             <i class="fab fa-google fa-fw"></i> Logar pelo Google
@@ -69,12 +69,12 @@
                                         </a> 
                                     </form>
                                     <hr>-->
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.html">Crie a sua conta clicando aqui!</a>
-                                    </div>
+                                        <div class="text-center">
+                                            <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a class="small" href="register.html">Crie a sua conta clicando aqui!</a>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -98,21 +98,31 @@
     <script src="js/sb-admin-2.min.js"></script>
 
     <script>
-        async function login(event){
+        async function login(event) {
             const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({                
+                body: JSON.stringify({
                     email: document.getElementById('email').value,
                     senha: document.getElementById('senha').value,
-                    
+
                 })
             });
-            const data = await response.json();
-            localStorage.setItem('user',JSON.stringify(data))
+            data = await response.json();
+            window.location.href = 'index.html'
+            console.log(response);
+            console.log(data);
+
         }
+        const form = document.getElementById("form-login");
+        form.addEventListener('submit', (event) => {
+            console.log('submit');
+
+            login(event);
+            event.preventDefault();
+        });
 
     </script>
 

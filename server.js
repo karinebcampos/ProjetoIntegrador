@@ -126,6 +126,6 @@ app.put('/configuracoes/:id', async (req, res) => {
 })
 
 app.listen(3000, async () => {
-    await sequelize.sync();
+    await sequelize.sync({force: true});
     console.log('app is running on port 3000');
 });

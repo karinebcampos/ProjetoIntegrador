@@ -3,7 +3,7 @@ const { sequelize } = require('../db');
 
 class Usuario extends Model { }
 Usuario.init({
-    cpf: {
+    email: {
         type: DataTypes.STRING,
     },
     senha: {
