@@ -67,8 +67,9 @@
                                         <a href="index.html" class="btn btn-facebook btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Logar pelo Facebook
                                         </a> 
-                                    </form>
+                                   
                                     <hr>-->
+                                </form>
                                         <div class="text-center">
                                             <a class="small" href="forgot-password.html">Esqueceu sua senha?</a>
                                         </div>
@@ -111,17 +112,20 @@
                 })
             });
             data = await response.json();
-            window.location.href = 'index.html'
+            localStorage.setItem('user',JSON.stringify(data))
+  
             console.log(response);
             console.log(data);
 
         }
         const form = document.getElementById("form-login");
-        form.addEventListener('submit', (event) => {
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
             console.log('submit');
 
-            login(event);
-            event.preventDefault();
+            await login(event);
+           
+          //  window.location.href = 'index.html'
         });
 
     </script>

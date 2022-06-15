@@ -33,7 +33,7 @@ app.post('/login', async (req, res) => {
     });
     if (user){
         if (user.senha == req.body.senha){
-            const configuracao = Configuracao.findOne({where : {userId: user.id}})
+            const configuracao = await Configuracao.findOne({where : {userId: user.id}})
             return res.json({
                 user: {
                     id: user.id,
@@ -126,6 +126,6 @@ app.put('/configuracoes/:id', async (req, res) => {
 })
 
 app.listen(3000, async () => {
-    await sequelize.sync({force: true});
+    await sequelize.sync();
     console.log('app is running on port 3000');
 });

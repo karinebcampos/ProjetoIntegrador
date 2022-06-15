@@ -482,15 +482,15 @@
 
                         async function putConfiguracoes() {
                             const id = localStorage.getItem('leituraId')
-                            const user = JSON.parse( localStorage.getItem('user') );
+                            const config = JSON.parse( localStorage.getItem('user') ).configuracao;
                             
-                            const response = await fetch('http://localhost:3000/configuracoes/' + id, {
+                            const response = await fetch('http://localhost:3000/configuracoes/' + config.id, {
                                 method: 'PUT',
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify({
-                                    userId: user.id,
+                                    userId: config.userId,
                                     nome: document.getElementById('name').value,
                                     email: document.getElementById('email').value,
                                     password: document.getElementById('password').value,
@@ -519,12 +519,15 @@
                         //POST CONFIGURAÇÕES
 
                         async function cadastrarConfiguracoes() {
+                            const user = JSON.parse( localStorage.getItem('user') ).user;
+                            console.log(user);
                             const response = await fetch('http://localhost:3000/configuracoes', {
                                 method: 'POST',
                                 headers: {
                                     'Content-Type': 'application/json'
                                 },
                                 body: JSON.stringify({
+                                    userId: user.id,
                                     nome: document.getElementById('name').value,
                                     email: document.getElementById('email').value,
                                     password: document.getElementById('password').value,
@@ -551,8 +554,11 @@
                         const form = document.getElementById("configuracao");
                         form.addEventListener('submit', (event) => {
                             console.log('submit');
-
-                            cadastrarConfiguracoes();
+                            const configuracoes = JSON.parse( localStorage.getItem('user')).configuracao;
+                            if (!configuracoes)
+                                cadastrarConfiguracoes();
+                            else
+                                putConfiguracoes();
                             event.preventDefault();
                         });
 
