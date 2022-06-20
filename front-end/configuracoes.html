@@ -554,7 +554,7 @@
                         const form = document.getElementById("configuracao");
                         form.addEventListener('submit', (event) => {
                             console.log('submit');
-                            const configuracoes = JSON.parse( localStorage.getItem('user')).configuracao;
+                            const configuracoes = JSON.parse( localStorage.getItem('user') ).configuracao;
                             if (!configuracoes)
                                 cadastrarConfiguracoes();
                             else

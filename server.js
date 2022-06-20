@@ -9,6 +9,7 @@ const { Configuracao } = require('./back-end/configuracao');
 const { config } = require('dotenv');
 const req = require('express/lib/request');
 
+
 const app = express();
 app.use(bodyParser.json());
 
@@ -64,6 +65,7 @@ app.post('/dados', async (req,res) => {
     dados.hidrometro = req.body.hidrometro;
     dados.dt_leitura = req.body.dt_leitura;
     dados.valortarifa = req.body.valortarifa;
+    dados.userId = req.body.userId; 
     await dados.save();
     res.json(dados);
 })
@@ -74,7 +76,7 @@ app.put('/dados/:id', async (req, res) => {
         return res.status(404).send('Cadastro não encontrado');
     dados.hidrometro = req.body.hidrometro;
     dados.dt_leitura = req.body.dt_leitura;
-    dados.valortarifa = req.body.valortarifa;   
+    dados.valortarifa = req.body.valortarifa;  
     await dados.save();
     res.json(dados);
 })

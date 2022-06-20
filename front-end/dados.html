@@ -402,12 +402,15 @@
 
             async function putDados() {
                 const id = localStorage.getItem('leituraId')
-                const response = await fetch('http://localhost:3000/dados/' + id, {
+                const dados = JSON.parse( localStorage.getItem('user') ).dados;
+
+                const response = await fetch('http://localhost:3000/dados/' + dados.id, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        userId: dados.userId,
                         hidrometro: document.getElementById('hidrometro').value,
                         dt_leitura: document.getElementById('dt_leitura').value,
                         valortarifa: document.getElementById('valortarifa').value
@@ -420,7 +423,7 @@
                 console.log(data);
                 console.log('put dados')
 
-                localStorage.setItem('leituraId', data.id);
+                localStorage.setItem('leituraId',data.id);
 
             }
 
@@ -428,12 +431,15 @@
             //POST Dados
 
             async function cadastrarDados() {
+                const user = JSON.parse( localStorage.getItem('user') ).user;
+                console.log(user);
                 const response = await fetch('http://localhost:3000/dados', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        userId: user.id,
                         hidrometro: document.getElementById('hidrometro').value,
                         dt_leitura: document.getElementById('dt_leitura').value,
                         valortarifa: document.getElementById('valortarifa').value,
@@ -452,8 +458,11 @@
             const form = document.getElementById("dados");
             form.addEventListener('submit', (event) => {
                 console.log('submit');
-
-                cadastrarDados();
+                const dados = JSON.parse( localStorage.getItem('user') ).dados;
+                if(!dados)
+                    cadastrarDados();
+                else
+                    putDados();
                 event.preventDefault();
             });
 

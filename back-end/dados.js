@@ -11,7 +11,10 @@ Dados.init({
     },
     valortarifa: {
         type: DataTypes.STRING
-    }
+    },
+    userId: {
+        type: DataTypes.STRING
+    },
 }, {
     sequelize: sequelize,
     modelName: 'dados'
