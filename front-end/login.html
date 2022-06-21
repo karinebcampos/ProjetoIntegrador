@@ -113,7 +113,7 @@
             });
             data = await response.json();
             localStorage.setItem('user',JSON.stringify(data))
-  
+            window.location.href = 'configuracoes.html'
             console.log(response);
             console.log(data);
 

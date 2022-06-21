@@ -55,7 +55,9 @@ app.post('/login', async (req, res) => {
 
 app.get('/dados', async (req,res) => {
     console.log(req.body);
-    const dados = await Dados.findOne();
+    const dados = await Dados.findOne({
+        order: [ [ 'createdAt', 'DESC' ]],
+    });
     res.json(dados)
 });
 

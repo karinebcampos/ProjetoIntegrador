@@ -207,7 +207,7 @@
                             <!-- Barra superior - Notificações-->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                              <!--  <a class="dropdown-item" href="config_notificacoes.html">
+                                <!--  <a class="dropdown-item" href="config_notificacoes.html">
                                     <i class="fa fa-bell fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Notificações
                                 </a> 
@@ -247,7 +247,7 @@
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                 Consumo diário</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">Mt³ 10</div>
-                                            </div>                                     
+                                        </div>
                                         <div class="col-auto">
                                             <i class="fas fa-hand-holding-water fa-2x text-gray-300"></i>
                                         </div>
@@ -460,52 +460,54 @@
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    </div>
+                                </div>
                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong>Atenção!</strong> O nível de gastos diários foi excedido!
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        </div>
-                                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                            <strong>Atenção!</strong> O nível de gastos diários foi excedido!
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" type="button"
-                                            data-dismiss="modal">Voltar</button>
-
-                                    </div>
+                                    <strong>Atenção!</strong> O nível de gastos diários foi excedido!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    <strong>Atenção!</strong> O nível de gastos diários foi excedido!
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                 </div>
                             </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal">Voltar</button>
+
+                            </div>
                         </div>
+                    </div>
+                </div>
 
 
-                        <!-- Bootstrap core JavaScript-->
-                        <script src="vendor/jquery/jquery.min.js"></script>
-                        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+                <!-- Bootstrap core JavaScript-->
+                <script src="vendor/jquery/jquery.min.js"></script>
+                <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-                        <!-- Core plugin JavaScript-->
-                        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+                <!-- Core plugin JavaScript-->
+                <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-                        <!-- Custom scripts for all pages-->
-                        <script src="js/sb-admin-2.min.js"></script>
+                <!-- Custom scripts for all pages-->
+                <script src="js/sb-admin-2.min.js"></script>
 
-                        <!-- Page level plugins -->
-                        <script src="vendor/chart.js/Chart.min.js"></script>
+                <!-- Page level plugins -->
+                <script src="vendor/chart.js/Chart.min.js"></script>
 
-                        <!-- Page level custom scripts -->
-                        <script src="js/demo/chart-area-demo.js"></script>
-                        <script src="js/demo/chart-pie-demo.js"></script>
+                <!-- Page level custom scripts -->
+                <script src="js/demo/chart-area-demo.js"></script>
+                <script src="js/demo/chart-pie-demo.js"></script>
+                <script src="user.js">  </script>
 
-                        
-                        <script>
-                            document.getElementById("nome_usuario").innerHTML = "Ana Cristina";
 
-                        </script>
+                <script>
+                  
+                
+                   
+                    localStorage.setItem('leituraId',data.id);
+                </script>
 
 </body>
 
