@@ -393,7 +393,7 @@
                 data = await response.json();
                 document.getElementById('hidrometro').value = data.hidrometro;
                 document.getElementById('dt_leitura').value = data.dt_leitura;
-                document.getElementById('valortarifa').value = data.hidrometro;
+                document.getElementById('valortarifa').value = data.valortarifa;
                 console.log('get dados');
                 localStorage.setItem('leituraId', data.id);
             }

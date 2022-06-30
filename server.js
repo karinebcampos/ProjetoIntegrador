@@ -8,6 +8,8 @@ const { Dados } = require('./back-end/dados.js');
 const { Configuracao } = require('./back-end/configuracao');
 const { config } = require('dotenv');
 const req = require('express/lib/request');
+const { QueryTypes } = require('sequelize');
+
 
 
 const app = express();
@@ -15,7 +17,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
-app.post('/register', async (req,res) => {
+app.post('/register', async (req, res) => {
     console.log(req.body);
     const registro = new Registro();
     registro.nome = req.body.name;
@@ -32,9 +34,9 @@ app.post('/login', async (req, res) => {
             email: req.body.email
         }
     });
-    if (user){
-        if (user.senha == req.body.senha){
-            const configuracao = await Configuracao.findOne({where : {userId: user.id}})
+    if (user) {
+        if (user.senha == req.body.senha) {
+            const configuracao = await Configuracao.findOne({ where: { userId: user.id } })
             return res.json({
                 user: {
                     id: user.id,
@@ -48,26 +50,26 @@ app.post('/login', async (req, res) => {
     res.status(401).json({
         message: 'Usuário ou senha incorretos'
     })
-    
+
 })
 
 
 
-app.get('/dados', async (req,res) => {
+app.get('/dados', async (req, res) => {
     console.log(req.body);
     const dados = await Dados.findOne({
-        order: [ [ 'createdAt', 'DESC' ]],
+        order: [['createdAt', 'DESC']],
     });
     res.json(dados)
 });
 
-app.post('/dados', async (req,res) => {
+app.post('/dados', async (req, res) => {
     console.log(req.body);
     const dados = new Dados();
     dados.hidrometro = req.body.hidrometro;
     dados.dt_leitura = req.body.dt_leitura;
     dados.valortarifa = req.body.valortarifa;
-    dados.userId = req.body.userId; 
+    dados.userId = req.body.userId;
     await dados.save();
     res.json(dados);
 })
@@ -78,18 +80,18 @@ app.put('/dados/:id', async (req, res) => {
         return res.status(404).send('Cadastro não encontrado');
     dados.hidrometro = req.body.hidrometro;
     dados.dt_leitura = req.body.dt_leitura;
-    dados.valortarifa = req.body.valortarifa;  
+    dados.valortarifa = req.body.valortarifa;
     await dados.save();
     res.json(dados);
 })
 
-app.get('/configuracoes', async (req,res) => {
+app.get('/configuracoes', async (req, res) => {
     console.log(req.body);
     const configuracao = await Configuracao.findOne();
     res.json(configuracao)
 });
 
-app.post('/configuracoes', async (req,res) => {
+app.post('/configuracoes', async (req, res) => {
     console.log(req.body);
     const configuracao = new Configuracao();
     configuracao.nome = req.body.nome;
@@ -125,9 +127,35 @@ app.put('/configuracoes/:id', async (req, res) => {
     configuracao.estado = req.body.estado;
     configuracao.endereco = req.body.endereco;
     configuracao.numero = req.body.numero;
+    configuracao.complemento = req.body.complemento;
     await configuracao.save();
     res.json(configuracao);
 })
+
+app.get('/relatorio', async (req, res) => {
+    console.log(req.body);
+
+    const meses = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+    const consumo = []
+
+    meses.forEach(async (item) => {
+        const sql = `
+            SELECT SUM(hidrometro) as soma_hidrometro FROM dados 
+            WHERE
+                MONTH(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = ${item}
+                AND YEAR(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = YEAR(NOW());
+        `
+        const [result] = await sequelize.query(sql, { type: QueryTypes.SELECT })
+        const { soma_hidrometro } = result
+
+        consumo.push(soma_hidrometro)
+    })
+
+    console.log(consumo ? `\n\n### ${consumo}` : '');
+
+    res.json({ meses: meses, consumo: consumo })
+});
+
 
 app.listen(3000, async () => {
     await sequelize.sync();
