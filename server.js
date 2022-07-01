@@ -138,22 +138,21 @@ app.get('/relatorio', async (req, res) => {
     const meses = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
     const consumo = []
 
-    meses.forEach(async (item) => {
+    for (var i = 0; i < meses.length; i += 1) {
         const sql = `
-            SELECT SUM(hidrometro) as soma_hidrometro FROM dados 
-            WHERE
-                MONTH(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = ${item}
-                AND YEAR(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = YEAR(NOW());
+        SELECT SUM(hidrometro) as soma_hidrometro FROM dados 
+        WHERE
+            MONTH(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = ${meses[i]}
+            AND YEAR(STR_TO_DATE(dt_leitura,'%Y-%m-%d')) = YEAR(NOW());
         `
+
         const [result] = await sequelize.query(sql, { type: QueryTypes.SELECT })
         const { soma_hidrometro } = result
 
         consumo.push(soma_hidrometro)
-    })
+    }
 
-    console.log(consumo ? `\n\n### ${consumo}` : '');
-
-    res.json({ meses: meses, consumo: consumo })
+    res.json({ meses: meses, consumo: consumo }).status(200)
 });
 
 
