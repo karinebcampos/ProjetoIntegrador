@@ -138,7 +138,7 @@ app.get('/relatorio', async (req, res) => {
     const meses = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
     const consumo = []
 
-    for (var i = 0; i < meses.length; i += 1) {
+    for (var i = 0; i < meses.length; i ++) {
         const sql = `
         SELECT SUM(hidrometro) as soma_hidrometro FROM dados 
         WHERE
@@ -149,10 +149,10 @@ app.get('/relatorio', async (req, res) => {
         const [result] = await sequelize.query(sql, { type: QueryTypes.SELECT })
         const { soma_hidrometro } = result
 
-        consumo.push(soma_hidrometro)
+        consumo.push(soma_hidrometro ?? 0)
     }
 
-    res.json({ meses: meses, consumo: consumo }).status(200)
+    res.json({consumos: consumo }).status(200)
 });
 
 
